@@ -10,10 +10,12 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "billet")
 public class Billet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idBillet")
     private Long idBillet;
 
     @ManyToOne

@@ -13,13 +13,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "spectacle")
 public class Spectacle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idSpectacle")
     private Long idSpectacle;
 
-    @Column(nullable = false, length = 255)
+    @Column(name = "titre", length = 255)
     private String titre;
 
     @Column(columnDefinition = "TEXT")
@@ -37,8 +39,11 @@ public class Spectacle {
 
     private int placesDisponibles;
 
+    private int capaciteTotale;
+
     @Enumerated(EnumType.STRING)
-    private StatutSpectacle statut = StatutSpectacle.ACTIF;
+    @Builder.Default
+    private StatutSpectacle statut = StatutSpectacle.DISPONIBLE;
 
     @OneToMany(mappedBy = "spectacle", cascade = CascadeType.ALL)
     private List<Billet> billets;

@@ -13,5 +13,7 @@ public interface BilletRepository extends JpaRepository<Billet, Long> {
 
     List<Billet> findByReservation(Reservation reservation);
 
+    List<Billet> findByReservation_IdReservation(Long reservationId);
+
     List<Billet> findBySpectacle(Spectacle spectacle);
 }

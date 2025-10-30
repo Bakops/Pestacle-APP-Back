@@ -11,6 +11,10 @@ import java.util.List;
 @Repository
 public interface SpectacleRepository extends JpaRepository<Spectacle, Long> {
     List<Spectacle> findByTitreContainingIgnoreCase(String titre);
+
     List<Spectacle> findByStatut(StatutSpectacle statut);
+
     List<Spectacle> findByDateHeureAfter(LocalDateTime date);
+
+    List<Spectacle> findByDateHeureAfterAndStatut(LocalDateTime date, StatutSpectacle statut);
 }

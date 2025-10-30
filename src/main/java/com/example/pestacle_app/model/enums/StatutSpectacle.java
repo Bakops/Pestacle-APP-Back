@@ -1,7 +1,8 @@
 package com.example.pestacle_app.model.enums;
 
 public enum StatutSpectacle {
-    ACTIF,
+    DISPONIBLE,
+    COMPLET,
     ANNULE,
-    ARCHIVE
+    TERMINE
 }
