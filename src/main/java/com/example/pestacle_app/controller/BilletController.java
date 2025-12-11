@@ -1,5 +1,4 @@
 package com.example.pestacle_app.controller;
-
 import com.example.pestacle_app.dto.BilletDTO;
 import com.example.pestacle_app.service.BilletService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,7 +7,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -30,6 +28,8 @@ public class BilletController {
     public ResponseEntity<BilletDTO> getBillet(@PathVariable Long id) {
         return ResponseEntity.ok(billetService.getBillet(id));
     }
+
+    @PutMapping
 
     @PostMapping
     @Operation(summary = "Créer un nouveau billet")
