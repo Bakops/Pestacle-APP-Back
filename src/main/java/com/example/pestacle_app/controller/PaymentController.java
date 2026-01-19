@@ -23,7 +23,7 @@ public class PaymentController {
                 .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
                 .addPaymentMethodType(SessionCreateParams.PaymentMethodType.ALIPAY)
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl("http://localhost:3000/success")
+                .setSuccessUrl("http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}")
                 .setCancelUrl("http://localhost:3000/panier")
                 .addLineItem(
                         SessionCreateParams.LineItem.builder()
