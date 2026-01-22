@@ -120,7 +120,7 @@ public class PaymentController {
                             </td>
                         </tr>
 
-                       
+
                         <tr>
                             <td style="padding: 0 40px 40px 40px;">
                                 <h2 style="margin: 0 0 20px 0; color: #1a1a1a; font-size: 24px; font-weight: bold;">

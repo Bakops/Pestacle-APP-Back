@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/spectacles")
+@CrossOrigin(origins = "http://localhost:3000")
 @Tag(name = "Spectacles", description = "API de gestion des spectacles")
 @RequiredArgsConstructor
 public class SpectacleController {
