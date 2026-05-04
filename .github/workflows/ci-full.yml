@@ -1,0 +1,41 @@
+name: Backend CI - full tests (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: 'Maven profile to run (default: all-tests)'
+        required: false
+        default: 'all-tests'
+
+jobs:
+  full-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2-
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Run full test suite
+        run: mvn -B -P${{ github.event.inputs.profile }} verify
+
+      - name: Archive test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports-full
+          path: target/surefire-reports

@@ -94,13 +94,4 @@ Test présent :
    Vérifie que le contexte Spring démarre avec le profil de test.
    Justification : ce test détecte rapidement un problème global de configuration, de bean ou de démarrage.
 
-## Pourquoi ces tests sont volontairement simples
 
-Le choix ici est de garder des tests courts, lisibles et centrés sur une seule responsabilité :
-
-- un test unitaire = une règle métier importante
-- un test d'intégration = un contrat technique visible
-- peu d'assertions, mais des assertions utiles
-- pas de scénario artificiellement complexe
-
-L'objectif est d'avoir une base de tests facile à relire, à expliquer et à maintenir.
