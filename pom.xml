@@ -28,6 +28,8 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <junit.includedTags></junit.includedTags>
+        <junit.excludedTags>perf,load</junit.excludedTags>
     </properties>
     <dependencies>
         <dependency>
@@ -103,9 +105,49 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <groups>${junit.includedTags}</groups>
+                    <excludedGroups>${junit.excludedTags}</excludedGroups>
+                    <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>unit-tests</id>
+            <properties>
+                <junit.includedTags>unit</junit.includedTags>
+                <junit.excludedTags></junit.excludedTags>
+            </properties>
+        </profile>
+        <profile>
+            <id>perf-tests</id>
+            <properties>
+                <junit.includedTags>perf</junit.includedTags>
+                <junit.excludedTags></junit.excludedTags>
+            </properties>
+        </profile>
+        <profile>
+            <id>load-tests</id>
+            <properties>
+                <junit.includedTags>load</junit.includedTags>
+                <junit.excludedTags></junit.excludedTags>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-tests</id>
+            <properties>
+                <junit.includedTags></junit.includedTags>
+                <junit.excludedTags></junit.excludedTags>
+            </properties>
+        </profile>
+    </profiles>
 </project>

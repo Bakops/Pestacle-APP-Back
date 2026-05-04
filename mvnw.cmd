@@ -27,6 +27,17 @@
 @REM   MVNW_VERBOSE - true: enable verbose log; others: silence the output
 @REM ----------------------------------------------------------------------------
 
+@SET "__MVNW_DEFAULT_JAVA21__=C:\Program Files\Java\jdk-21"
+@IF EXIST "%__MVNW_DEFAULT_JAVA21__%\bin\java.exe" (
+  @IF "%JAVA_HOME%"=="" (
+    @SET "JAVA_HOME=%__MVNW_DEFAULT_JAVA21__%"
+  ) ELSE (
+    @echo "%JAVA_HOME%" | findstr /I "jdk1.8 jre1.8" >NUL
+    @IF NOT ERRORLEVEL 1 @SET "JAVA_HOME=%__MVNW_DEFAULT_JAVA21__%"
+  )
+)
+@SET "__MVNW_DEFAULT_JAVA21__="
+
 @IF "%__MVNW_ARG0_NAME__%"=="" (SET __MVNW_ARG0_NAME__=%~nx0)
 @SET __MVNW_CMD__=
 @SET __MVNW_ERROR__=
